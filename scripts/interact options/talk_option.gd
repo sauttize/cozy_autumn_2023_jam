@@ -4,20 +4,12 @@ extends InteractOption
 
 @export_category("Talk option")
 @export var npc : NPC
-var interaction : Interaction
-
-func _ready() -> void:
-	if npc:
-		get_interaction()
+var dialogue_box : PackedScene = preload("res://ui/dialogue_box.tscn")
 
 func action():
-	if !interaction and npc:
-		get_interaction()
-	elif !npc:
+	if !npc:
 		push_error("NPC missing in %s" % self.name)
-		return
-	
-	# stuff with interaction...
-
-func get_interaction():
-	interaction = npc.current_interaction
+	else:
+		var new_dialoguebox = dialogue_box.instantiate() as DialogueBox
+		new_dialoguebox.npc = npc
+		add_child(new_dialoguebox)

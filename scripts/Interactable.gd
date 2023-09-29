@@ -6,7 +6,9 @@ class_name Interactable
 @export var selected_style : StyleBoxFlat
 @export var not_selected_style : StyleBoxFlat
 @export_category("Nodes")
-@export var interaction_panels : Array[Panel]
+var current_panel : InteractOption:
+	get: return interaction_panels[selected]
+@export var interaction_panels : Array[InteractOption]
 @export var area_nodes : Array[Area2D]
 @export_category("Attributes")
 @export var in_area : bool = false ## If player is in area
@@ -20,14 +22,14 @@ func _ready() -> void:
 	visibility_changed.connect(reset_attributes)
 
 func _input(event: InputEvent) -> void:
-	if in_area:
+	if in_area && !GM.showing_dialogue:
 		if event.is_action_pressed("interact"):
 			if self.visible:
 				self.hide()
-				GM.PLAYER.disable_movement = false
+				current_panel.action()
 			else:
 				self.show()
-				GM.PLAYER.disable_movement = true
+				GM.disable_movement()
 	
 	if !self.visible: return
 	if event.is_action_released("down"):
