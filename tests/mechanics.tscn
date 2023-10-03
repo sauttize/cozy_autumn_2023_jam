@@ -1,17 +1,13 @@
-[gd_scene load_steps=42 format=3 uid="uid://bvklnvycqc1ya"]
+[gd_scene load_steps=24 format=3 uid="uid://bvklnvycqc1ya"]
 
 [ext_resource type="Texture2D" uid="uid://cb4fniyw0ptl" path="res://icon.svg" id="1_42j5m"]
 [ext_resource type="PackedScene" uid="uid://cyhvg8ycit0tx" path="res://actors/player.tscn" id="2_ncgeg"]
-[ext_resource type="Script" path="res://scripts/NPC.gd" id="3_62ypp"]
-[ext_resource type="Script" path="res://scripts/Interactable.gd" id="4_15ge3"]
-[ext_resource type="Script" path="res://scripts/interact options/talk_option.gd" id="5_j1mpj"]
-[ext_resource type="Script" path="res://resources/DialogueLine.gd" id="6_2jasm"]
-[ext_resource type="Script" path="res://resources/Dialogue.gd" id="7_st382"]
-[ext_resource type="Script" path="res://resources/Interaction.gd" id="8_4wcw8"]
-[ext_resource type="Texture2D" uid="uid://rxoigew1cai8" path="res://tests/rob/angry.jpg" id="9_45kcq"]
-[ext_resource type="Script" path="res://resources/NPC.gd" id="10_gfb74"]
-[ext_resource type="Texture2D" uid="uid://j1uuo2sst4lr" path="res://tests/rob/neutral.jpg" id="10_r4mrc"]
-[ext_resource type="Texture2D" uid="uid://b0fo4phdsldje" path="res://tests/rob/batman.jpg" id="11_ko8rd"]
+[ext_resource type="PackedScene" uid="uid://7eyxr67uqbv3" path="res://actors/npc.tscn" id="3_qaaem"]
+[ext_resource type="Script" path="res://scripts/Menu.gd" id="4_8greq"]
+[ext_resource type="PackedScene" uid="uid://yh6jbvkbomrk" path="res://ui/interactable.tscn" id="4_o4sii"]
+[ext_resource type="PackedScene" uid="uid://3gggjw17klsg" path="res://ui/interact_option.tscn" id="5_43dpw"]
+[ext_resource type="Script" path="res://scripts/interact options/talk_option.gd" id="6_7a24k"]
+[ext_resource type="Resource" uid="uid://dc6ubgyapjqdx" path="res://tests/rob/npc rob.tres" id="7_ks7lm"]
 [ext_resource type="Texture2D" uid="uid://8w7lrxj6q7vp" path="res://ui/menu/nametag.png" id="13_mtbbk"]
 [ext_resource type="Texture2D" uid="uid://cesbs04y0p8uk" path="res://ui/menu/base.png" id="13_pxiiu"]
 [ext_resource type="Script" path="res://scripts/custom nodes/AnimationSequence.gd" id="14_mq0xp"]
@@ -20,93 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://n816rsr81vfu" path="res://ui/menu/cover/3.png" id="16_e2rld"]
 [ext_resource type="Texture2D" uid="uid://svnmy7r60sel" path="res://ui/menu/cover/4.png" id="17_0mhbm"]
 [ext_resource type="Texture2D" uid="uid://bsvfgttoj8suk" path="res://ui/menu/cover/5.png" id="18_1rjua"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gdtur"]
-size = Vector2(32, 63)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gfot"]
-size = Vector2(32, 19)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2c0qd"]
-size = Vector2(20, 40)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cc4g"]
-bg_color = Color(0.929412, 0.690196, 0.478431, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w5o2t"]
-bg_color = Color(0.109804, 0.0196078, 0.0117647, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="Resource" id="Resource_1vkqd"]
-script = ExtResource("6_2jasm")
-content = "Ello dear"
-emotion = 0
-shake = false
-side_to_side = false
-
-[sub_resource type="Resource" id="Resource_cqsma"]
-script = ExtResource("6_2jasm")
-content = "This is a test for this AWESOME dialogue system (jk it's kinda basic)"
-emotion = 0
-shake = false
-side_to_side = false
-
-[sub_resource type="Resource" id="Resource_2l20c"]
-script = ExtResource("6_2jasm")
-content = "I am Batman, yes"
-emotion = 1
-shake = false
-side_to_side = false
-
-[sub_resource type="Resource" id="Resource_dqw7q"]
-script = ExtResource("7_st382")
-lines = Array[ExtResource("6_2jasm")]([SubResource("Resource_1vkqd"), SubResource("Resource_cqsma"), SubResource("Resource_2l20c")])
-allow_alt = false
-alt_lines = Array[ExtResource("6_2jasm")]([])
-
-[sub_resource type="Resource" id="Resource_sn2tv"]
-script = ExtResource("6_2jasm")
-content = "This is some alt text just in case"
-emotion = 0
-shake = false
-side_to_side = false
-
-[sub_resource type="Resource" id="Resource_rph0r"]
-script = ExtResource("6_2jasm")
-content = "That's enough, I don't have more lines..."
-emotion = 2
-shake = false
-side_to_side = false
-
-[sub_resource type="Resource" id="Resource_k2ybl"]
-script = ExtResource("7_st382")
-lines = Array[ExtResource("6_2jasm")]([SubResource("Resource_rph0r")])
-allow_alt = true
-alt_lines = Array[ExtResource("6_2jasm")]([SubResource("Resource_sn2tv")])
-
-[sub_resource type="Resource" id="Resource_n5l76"]
-script = ExtResource("8_4wcw8")
-dialogues = Array[ExtResource("7_st382")]([SubResource("Resource_dqw7q")])
-in_order = true
-index = 0
-finished = false
-loop = false
-final_dialogue = SubResource("Resource_k2ybl")
-
-[sub_resource type="Resource" id="Resource_buprq"]
-script = ExtResource("10_gfb74")
-npc_name = "Robert"
-current_interaction = SubResource("Resource_n5l76")
-pic_neutral = ExtResource("10_r4mrc")
-pic_angry = ExtResource("9_45kcq")
-pic_sad = ExtResource("11_ko8rd")
 
 [sub_resource type="GDScript" id="GDScript_seu5e"]
 script/source = "extends Panel
@@ -121,22 +30,6 @@ script/source = "extends Panel
 func _ready() -> void:
 	mouse_default_cursor_shape = Control.CURSOR_DRAG
 "
-
-[sub_resource type="Animation" id="Animation_kdlir"]
-resource_name = "slide_up"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Container:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(0.5, 0.5),
-"update": 0,
-"values": [Vector2(0, 500), Vector2(0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_upbef"]
 length = 0.001
@@ -188,6 +81,34 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Container:anchors_preset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="Animation" id="Animation_4gun0"]
+resource_name = "name_note"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/Notebook/NameTag:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(39, 13), Vector2(39, -50)]
+}
 
 [sub_resource type="Animation" id="Animation_oynmb"]
 resource_name = "notebook_opens"
@@ -217,20 +138,20 @@ tracks/1/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_4gun0"]
-resource_name = "name_note"
+[sub_resource type="Animation" id="Animation_kdlir"]
+resource_name = "slide_up"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Container/Notebook/NameTag:position")
+tracks/0/path = NodePath("Container:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 1),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(39, 13), Vector2(39, -50)]
+"values": [Vector2(0, 500), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hj7j5"]
@@ -250,127 +171,25 @@ scale = Vector2(7, 3.92188)
 texture = ExtResource("1_42j5m")
 
 [node name="Player" parent="." instance=ExtResource("2_ncgeg")]
+position = Vector2(87, 83)
 
-[node name="NPC" type="CharacterBody2D" parent="." node_paths=PackedStringArray("area_nodes", "interact_options")]
-position = Vector2(277, 83)
-script = ExtResource("3_62ypp")
-area_nodes = [NodePath("Interaction Areas/Up"), NodePath("Interaction Areas/Down"), NodePath("Interaction Areas/Right"), NodePath("Interaction Areas/Left")]
-interact_options = NodePath("Interactable")
+[node name="NPC" parent="." node_paths=PackedStringArray("interactable") instance=ExtResource("3_qaaem")]
+position = Vector2(248, 111)
+interactable = NodePath("Interactable")
 
-[node name="Sprite" type="Sprite2D" parent="NPC"]
-modulate = Color(0.894118, 0.909804, 0.407843, 0.8)
-scale = Vector2(0.25, 0.5)
-texture = ExtResource("1_42j5m")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC"]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_gdtur")
-
-[node name="Interaction Areas" type="Node2D" parent="NPC"]
-
-[node name="Up" type="Area2D" parent="NPC/Interaction Areas"]
-position = Vector2(1, -47)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Interaction Areas/Up"]
-shape = SubResource("RectangleShape2D_2gfot")
-
-[node name="Down" type="Area2D" parent="NPC/Interaction Areas"]
-position = Vector2(1, 46)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Interaction Areas/Down"]
-shape = SubResource("RectangleShape2D_2gfot")
-
-[node name="Right" type="Area2D" parent="NPC/Interaction Areas"]
-position = Vector2(32, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Interaction Areas/Right"]
-shape = SubResource("RectangleShape2D_2c0qd")
-
-[node name="Left" type="Area2D" parent="NPC/Interaction Areas"]
-position = Vector2(-32, -1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Interaction Areas/Left"]
-shape = SubResource("RectangleShape2D_2c0qd")
-
-[node name="Interactable" type="Node2D" parent="NPC" node_paths=PackedStringArray("interaction_panels", "area_nodes")]
+[node name="Interactable" parent="NPC" instance=ExtResource("4_o4sii")]
 visible = false
-position = Vector2(22, -45)
-script = ExtResource("4_15ge3")
-selected_style = SubResource("StyleBoxFlat_2cc4g")
-not_selected_style = SubResource("StyleBoxFlat_w5o2t")
-interaction_panels = [NodePath("Options/Talk"), NodePath("Options/Give item"), NodePath("Options/Leave")]
-area_nodes = [NodePath("../Interaction Areas/Up"), NodePath("../Interaction Areas/Down"), NodePath("../Interaction Areas/Right"), NodePath("../Interaction Areas/Left")]
 
-[node name="Options" type="VBoxContainer" parent="NPC/Interactable"]
-offset_top = -10.0
-offset_right = 90.0
-offset_bottom = 48.0
-theme_override_constants/separation = 2
-
-[node name="Talk" type="Panel" parent="NPC/Interactable/Options"]
-texture_filter = 1
-custom_minimum_size = Vector2(90, 18)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_w5o2t")
-script = ExtResource("5_j1mpj")
-npc = SubResource("Resource_buprq")
+[node name="Talk" parent="NPC/Interactable" instance=ExtResource("5_43dpw")]
+script = ExtResource("6_7a24k")
+npc = ExtResource("7_ks7lm")
 option_name = "Talk"
 
-[node name="Label" type="Label" parent="NPC/Interactable/Options/Talk"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = -1.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 12
-text = "Talk"
-vertical_alignment = 1
-
-[node name="Give item" type="Panel" parent="NPC/Interactable/Options"]
-texture_filter = 1
-custom_minimum_size = Vector2(90, 18)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_w5o2t")
-script = ExtResource("5_j1mpj")
-
-[node name="Label" type="Label" parent="NPC/Interactable/Options/Give item"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = -1.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 12
-text = "Give item"
-vertical_alignment = 1
-
-[node name="Leave" type="Panel" parent="NPC/Interactable/Options"]
-texture_filter = 1
-custom_minimum_size = Vector2(90, 18)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_w5o2t")
-script = ExtResource("5_j1mpj")
-
-[node name="Label" type="Label" parent="NPC/Interactable/Options/Leave"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = -1.0
-offset_bottom = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 12
-text = "Leave"
-vertical_alignment = 1
+[node name="Talk2" parent="NPC/Interactable" instance=ExtResource("5_43dpw")]
+visible = false
+script = ExtResource("6_7a24k")
+npc = ExtResource("7_ks7lm")
+option_name = "Talk TWO"
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
@@ -420,13 +239,15 @@ text = "DRAG"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Menu" type="CanvasLayer" parent="."]
+[node name="Menu" type="CanvasLayer" parent="." node_paths=PackedStringArray("animation_sequence")]
+visible = false
+script = ExtResource("4_8greq")
+animation_sequence = NodePath("AnimationSequence")
 
 [node name="Container" type="MarginContainer" parent="Menu"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -0.000946045
 grow_horizontal = 2
 grow_vertical = 2
 

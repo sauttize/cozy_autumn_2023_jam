@@ -43,8 +43,7 @@ func _input(event: InputEvent) -> void:
 			skipped = true
 
 func start() -> void:
-	GM.disable_movement()
-	GM.showing_dialogue = true
+	GM.busy = true
 	clear_text(true)
 	name_text.append_text(npc.get_name_bold())
 	
@@ -64,8 +63,7 @@ func stop() -> void:
 			if inter.next_interaction:
 				npc.current_interaction = inter.next_interaction
 	
-	GM.enable_movement()
-	GM.showing_dialogue = false
+	GM.busy = false
 	queue_free()
 
 func show_text(text : String) -> void:

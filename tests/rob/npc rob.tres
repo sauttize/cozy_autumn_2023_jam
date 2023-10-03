@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="NPC" load_steps=16 format=3 uid="uid://dc6ubgyapjqdx"]
+
+[ext_resource type="Script" path="res://resources/DialogueLine.gd" id="1_by2bl"]
+[ext_resource type="Script" path="res://resources/Dialogue.gd" id="2_hmk3p"]
+[ext_resource type="Script" path="res://resources/Interaction.gd" id="3_2ltjf"]
+[ext_resource type="Texture2D" uid="uid://rxoigew1cai8" path="res://tests/rob/angry.jpg" id="4_5b176"]
+[ext_resource type="Texture2D" uid="uid://j1uuo2sst4lr" path="res://tests/rob/neutral.jpg" id="5_mosdo"]
+[ext_resource type="Texture2D" uid="uid://b0fo4phdsldje" path="res://tests/rob/batman.jpg" id="6_qa5ov"]
+[ext_resource type="Script" path="res://resources/NPC.gd" id="7_piq6v"]
+
+[sub_resource type="Resource" id="Resource_1vkqd"]
+script = ExtResource("1_by2bl")
+content = "Ello dear"
+emotion = 0
+shake = false
+side_to_side = false
+
+[sub_resource type="Resource" id="Resource_cqsma"]
+script = ExtResource("1_by2bl")
+content = "This is a test for this AWESOME dialogue system (jk it's kinda basic)"
+emotion = 0
+shake = false
+side_to_side = false
+
+[sub_resource type="Resource" id="Resource_2l20c"]
+script = ExtResource("1_by2bl")
+content = "I am Batman, yes"
+emotion = 1
+shake = false
+side_to_side = false
+
+[sub_resource type="Resource" id="Resource_dqw7q"]
+script = ExtResource("2_hmk3p")
+lines = Array[ExtResource("1_by2bl")]([SubResource("Resource_1vkqd"), SubResource("Resource_cqsma"), SubResource("Resource_2l20c")])
+allow_alt = false
+alt_lines = Array[ExtResource("1_by2bl")]([])
+
+[sub_resource type="Resource" id="Resource_sn2tv"]
+script = ExtResource("1_by2bl")
+content = "This is some alt text just in case"
+emotion = 0
+shake = false
+side_to_side = false
+
+[sub_resource type="Resource" id="Resource_rph0r"]
+script = ExtResource("1_by2bl")
+content = "That's enough, I don't have more lines..."
+emotion = 2
+shake = false
+side_to_side = false
+
+[sub_resource type="Resource" id="Resource_k2ybl"]
+script = ExtResource("2_hmk3p")
+lines = Array[ExtResource("1_by2bl")]([SubResource("Resource_rph0r")])
+allow_alt = true
+alt_lines = Array[ExtResource("1_by2bl")]([SubResource("Resource_sn2tv")])
+
+[sub_resource type="Resource" id="Resource_n5l76"]
+script = ExtResource("3_2ltjf")
+dialogues = Array[ExtResource("2_hmk3p")]([SubResource("Resource_dqw7q")])
+in_order = true
+index = 0
+finished = false
+loop = false
+final_dialogue = SubResource("Resource_k2ybl")
+
+[resource]
+script = ExtResource("7_piq6v")
+npc_name = "Robert"
+current_interaction = SubResource("Resource_n5l76")
+pic_neutral = ExtResource("5_mosdo")
+pic_angry = ExtResource("4_5b176")
+pic_sad = ExtResource("6_qa5ov")

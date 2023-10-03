@@ -1,35 +1,32 @@
+@tool
 extends Node2D
 class_name Interactable
 
-@export_category("Options")
-@export var selected : int = 0
-@export var selected_style : StyleBoxFlat
-@export var not_selected_style : StyleBoxFlat
-@export_category("Nodes")
-var current_panel : InteractOption:
-	get: return interaction_panels[selected]
-@export var interaction_panels : Array[InteractOption]
-@export var area_nodes : Array[Area2D]
-@export_category("Attributes")
-@export var in_area : bool = false ## If player is in area
+## Works alongside InteractOption. Children of this will be shown as options to select.
+
+var selected : int = 0 ## Current option index.
+var options_count : int : ## Counter of options.
+	get:
+		return interact_options.size()
+var current_option : InteractOption:
+	get: return interact_options[selected]
+var interact_options : Array[InteractOption]
 
 func _ready() -> void:
-	for area in area_nodes:
-		area.body_entered.connect(body_entered_area)
-		area.body_exited.connect(body_exited_area)
-
-	update_panel_style()
+	child_entered_tree.connect(update_children)
 	visibility_changed.connect(reset_attributes)
+	
+	update_children(null)
 
-func _input(event: InputEvent) -> void:
-	if in_area && !GM.showing_dialogue:
-		if event.is_action_pressed("interact"):
-			if self.visible:
-				self.hide()
-				current_panel.action()
-			else:
-				self.show()
-				GM.disable_movement()
+func interact(event: InputEvent) -> void:
+	if interact_options.is_empty(): return
+	if event.is_action_pressed("interact"):
+		if self.visible:
+			self.hide()
+			current_option.action()
+		elif !GM.is_busy():
+			self.show()
+			GM.make_busy()
 	
 	if !self.visible: return
 	if event.is_action_released("down"):
@@ -38,34 +35,46 @@ func _input(event: InputEvent) -> void:
 		change_selected(true)
 
 func change_selected(up : bool):
+	# No more options animation
+	if options_count == 1:
+		interact_options[0].play_shake()
+		return
+	# Reel animation
+	var index_before = selected
 	if up:
+		interact_options[index_before].play_anim_up()
 		if selected == 0:
-			selected = (interaction_panels.size() - 1)
+			selected = (interact_options.size() - 1)
 		else:
 			selected -= 1
+		interact_options[selected].show()
+		await interact_options[selected].play_anim_up(true)
+		interact_options[index_before].hide()
 	else:
-		if selected >= (interaction_panels.size() - 1):
+		interact_options[index_before].play_anim_down()
+		if selected >= (interact_options.size() - 1):
 			selected = 0
 		else: 
 			selected += 1
-	update_panel_style()
-
-func update_panel_style():
-	for panel in interaction_panels:
-		panel.add_theme_stylebox_override("panel", not_selected_style)
-	
-	interaction_panels[selected].add_theme_stylebox_override("panel", selected_style)
+		interact_options[selected].show()
+		await interact_options[selected].play_anim_down(true)
+		interact_options[index_before].hide()
 
 func reset_attributes():
 	selected = 0
-	update_panel_style()
 
-## Areas of interaction behavior
+func update_children(_node) -> void:
+	interact_options.clear()
+	for node in get_children():
+		if node is InteractOption: interact_options.append(node)
+		node.hide()
+	if !interact_options.is_empty(): interact_options[0].show()
+	update_configuration_warnings()
 
-func body_entered_area(body : Node2D):
-	if body is Player:
-		in_area = true
-
-func body_exited_area(body : Node2D):
-	if body is Player:
-		in_area = false
+func _get_configuration_warnings() -> PackedStringArray:
+	if get_child_count() == 0:
+		return ["At least 1 InteractOption needed as child."]
+	else:
+		for node in get_children():
+			if node is InteractOption: return []
+		return ["No InteractOption found, remember to attach script."]
