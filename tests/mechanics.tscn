@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bvklnvycqc1ya"]
+[gd_scene load_steps=42 format=3 uid="uid://bvklnvycqc1ya"]
 
 [ext_resource type="Texture2D" uid="uid://cb4fniyw0ptl" path="res://icon.svg" id="1_42j5m"]
 [ext_resource type="PackedScene" uid="uid://cyhvg8ycit0tx" path="res://actors/player.tscn" id="2_ncgeg"]
@@ -8,8 +8,18 @@
 [ext_resource type="Script" path="res://resources/DialogueLine.gd" id="6_2jasm"]
 [ext_resource type="Script" path="res://resources/Dialogue.gd" id="7_st382"]
 [ext_resource type="Script" path="res://resources/Interaction.gd" id="8_4wcw8"]
-[ext_resource type="Texture2D" uid="uid://tmk87jt22ron" path="res://icon.png" id="9_nu6mh"]
+[ext_resource type="Texture2D" uid="uid://rxoigew1cai8" path="res://tests/rob/angry.jpg" id="9_45kcq"]
 [ext_resource type="Script" path="res://resources/NPC.gd" id="10_gfb74"]
+[ext_resource type="Texture2D" uid="uid://j1uuo2sst4lr" path="res://tests/rob/neutral.jpg" id="10_r4mrc"]
+[ext_resource type="Texture2D" uid="uid://b0fo4phdsldje" path="res://tests/rob/batman.jpg" id="11_ko8rd"]
+[ext_resource type="Texture2D" uid="uid://8w7lrxj6q7vp" path="res://ui/menu/nametag.png" id="13_mtbbk"]
+[ext_resource type="Texture2D" uid="uid://cesbs04y0p8uk" path="res://ui/menu/base.png" id="13_pxiiu"]
+[ext_resource type="Script" path="res://scripts/custom nodes/AnimationSequence.gd" id="14_mq0xp"]
+[ext_resource type="Texture2D" uid="uid://2el4yhyndap" path="res://ui/menu/cover/1.png" id="14_q8m5x"]
+[ext_resource type="Texture2D" uid="uid://chfqu6q5quwmw" path="res://ui/menu/cover/2.png" id="15_ehuno"]
+[ext_resource type="Texture2D" uid="uid://n816rsr81vfu" path="res://ui/menu/cover/3.png" id="16_e2rld"]
+[ext_resource type="Texture2D" uid="uid://svnmy7r60sel" path="res://ui/menu/cover/4.png" id="17_0mhbm"]
+[ext_resource type="Texture2D" uid="uid://bsvfgttoj8suk" path="res://ui/menu/cover/5.png" id="18_1rjua"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdtur"]
 size = Vector2(32, 63)
@@ -18,7 +28,7 @@ size = Vector2(32, 63)
 size = Vector2(32, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2c0qd"]
-size = Vector2(20, 64)
+size = Vector2(20, 40)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cc4g"]
 bg_color = Color(0.929412, 0.690196, 0.478431, 1)
@@ -34,82 +44,209 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[sub_resource type="Resource" id="Resource_1vho4"]
+[sub_resource type="Resource" id="Resource_1vkqd"]
 script = ExtResource("6_2jasm")
-content = "Buenas mi bella dama."
+content = "Ello dear"
 emotion = 0
 shake = false
 side_to_side = false
 
-[sub_resource type="Resource" id="Resource_4iub2"]
+[sub_resource type="Resource" id="Resource_cqsma"]
 script = ExtResource("6_2jasm")
-content = "Se encuentra used bien?"
-emotion = 3
+content = "This is a test for this AWESOME dialogue system (jk it's kinda basic)"
+emotion = 0
 shake = false
 side_to_side = false
 
-[sub_resource type="Resource" id="Resource_inl3s"]
+[sub_resource type="Resource" id="Resource_2l20c"]
+script = ExtResource("6_2jasm")
+content = "I am Batman, yes"
+emotion = 1
+shake = false
+side_to_side = false
+
+[sub_resource type="Resource" id="Resource_dqw7q"]
 script = ExtResource("7_st382")
-lines = Array[ExtResource("6_2jasm")]([SubResource("Resource_1vho4"), SubResource("Resource_4iub2")])
+lines = Array[ExtResource("6_2jasm")]([SubResource("Resource_1vkqd"), SubResource("Resource_cqsma"), SubResource("Resource_2l20c")])
 allow_alt = false
 alt_lines = Array[ExtResource("6_2jasm")]([])
 
-[sub_resource type="Resource" id="Resource_r43r8"]
+[sub_resource type="Resource" id="Resource_sn2tv"]
 script = ExtResource("6_2jasm")
-content = "Basta loco..."
+content = "This is some alt text just in case"
 emotion = 0
 shake = false
 side_to_side = false
 
-[sub_resource type="Resource" id="Resource_fgp4r"]
+[sub_resource type="Resource" id="Resource_rph0r"]
 script = ExtResource("6_2jasm")
-content = "En serio."
-emotion = 0
+content = "That's enough, I don't have more lines..."
+emotion = 2
 shake = false
 side_to_side = false
 
-[sub_resource type="Resource" id="Resource_j4bx1"]
-script = ExtResource("6_2jasm")
-content = "Ya no quiero hablar mas contigo."
-emotion = 0
-shake = false
-side_to_side = false
-
-[sub_resource type="Resource" id="Resource_44v54"]
-script = ExtResource("6_2jasm")
-content = "Tenes sarna."
-emotion = 0
-shake = false
-side_to_side = false
-
-[sub_resource type="Resource" id="Resource_yvcki"]
+[sub_resource type="Resource" id="Resource_k2ybl"]
 script = ExtResource("7_st382")
-lines = Array[ExtResource("6_2jasm")]([SubResource("Resource_j4bx1"), SubResource("Resource_44v54")])
+lines = Array[ExtResource("6_2jasm")]([SubResource("Resource_rph0r")])
 allow_alt = true
-alt_lines = Array[ExtResource("6_2jasm")]([SubResource("Resource_r43r8"), SubResource("Resource_fgp4r")])
+alt_lines = Array[ExtResource("6_2jasm")]([SubResource("Resource_sn2tv")])
 
-[sub_resource type="Resource" id="Resource_4xjq8"]
+[sub_resource type="Resource" id="Resource_n5l76"]
 script = ExtResource("8_4wcw8")
-dialogues = Array[ExtResource("7_st382")]([SubResource("Resource_inl3s")])
+dialogues = Array[ExtResource("7_st382")]([SubResource("Resource_dqw7q")])
 in_order = true
 index = 0
 finished = false
 loop = false
-final_dialogue = SubResource("Resource_yvcki")
+final_dialogue = SubResource("Resource_k2ybl")
 
-[sub_resource type="Resource" id="Resource_qgyox"]
+[sub_resource type="Resource" id="Resource_buprq"]
 script = ExtResource("10_gfb74")
-npc_name = "Richard"
-current_interaction = SubResource("Resource_4xjq8")
-pic_neutral = ExtResource("1_42j5m")
-pic_happy = ExtResource("9_nu6mh")
+npc_name = "Robert"
+current_interaction = SubResource("Resource_n5l76")
+pic_neutral = ExtResource("10_r4mrc")
+pic_angry = ExtResource("9_45kcq")
+pic_sad = ExtResource("11_ko8rd")
+
+[sub_resource type="GDScript" id="GDScript_seu5e"]
+script/source = "extends Panel
+
+func _ready() -> void:
+	mouse_default_cursor_shape = Control.CURSOR_FORBIDDEN
+"
+
+[sub_resource type="GDScript" id="GDScript_dc35s"]
+script/source = "extends Panel
+
+func _ready() -> void:
+	mouse_default_cursor_shape = Control.CURSOR_DRAG
+"
+
+[sub_resource type="Animation" id="Animation_kdlir"]
+resource_name = "slide_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 500), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_upbef"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Container/Notebook/Cover:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_q8m5x")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Container/Notebook/NameTag:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(39, 13)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Container/Notebook/Cover:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_oynmb"]
+resource_name = "notebook_opens"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/Notebook/Cover:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 1,
+"values": [ExtResource("14_q8m5x"), ExtResource("15_ehuno"), ExtResource("16_e2rld"), ExtResource("17_0mhbm"), ExtResource("18_1rjua"), null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Container/Notebook/Cover:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_4gun0"]
+resource_name = "name_note"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/Notebook/NameTag:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(39, 13), Vector2(39, -50)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hj7j5"]
+_data = {
+"RESET": SubResource("Animation_upbef"),
+"name_note": SubResource("Animation_4gun0"),
+"notebook_opens": SubResource("Animation_oynmb"),
+"slide_up": SubResource("Animation_kdlir")
+}
 
 [node name="mechanics" type="Node2D"]
 
 [node name="bg" type="Sprite2D" parent="."]
 self_modulate = Color(100, 100, 100, 0.24)
-position = Vector2(474, 196)
-scale = Vector2(7.35938, 3.10938)
+position = Vector2(451, 248)
+scale = Vector2(7, 3.92188)
 texture = ExtResource("1_42j5m")
 
 [node name="Player" parent="." instance=ExtResource("2_ncgeg")]
@@ -129,28 +266,28 @@ texture = ExtResource("1_42j5m")
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_gdtur")
 
-[node name="Interaction Areas" type="Node" parent="NPC"]
+[node name="Interaction Areas" type="Node2D" parent="NPC"]
 
 [node name="Up" type="Area2D" parent="NPC/Interaction Areas"]
-position = Vector2(277, 37)
+position = Vector2(1, -47)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Interaction Areas/Up"]
 shape = SubResource("RectangleShape2D_2gfot")
 
 [node name="Down" type="Area2D" parent="NPC/Interaction Areas"]
-position = Vector2(277, 130)
+position = Vector2(1, 46)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Interaction Areas/Down"]
 shape = SubResource("RectangleShape2D_2gfot")
 
 [node name="Right" type="Area2D" parent="NPC/Interaction Areas"]
-position = Vector2(308, 84)
+position = Vector2(32, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Interaction Areas/Right"]
 shape = SubResource("RectangleShape2D_2c0qd")
 
 [node name="Left" type="Area2D" parent="NPC/Interaction Areas"]
-position = Vector2(244, 83)
+position = Vector2(-32, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Interaction Areas/Left"]
 shape = SubResource("RectangleShape2D_2c0qd")
@@ -176,7 +313,7 @@ custom_minimum_size = Vector2(90, 18)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w5o2t")
 script = ExtResource("5_j1mpj")
-npc = SubResource("Resource_qgyox")
+npc = SubResource("Resource_buprq")
 option_name = "Talk"
 
 [node name="Label" type="Label" parent="NPC/Interactable/Options/Talk"]
@@ -234,3 +371,132 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 12
 text = "Leave"
 vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = 26.0
+offset_top = 313.0
+offset_right = 167.0
+offset_bottom = 453.0
+script = SubResource("GDScript_seu5e")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -13.0
+offset_right = 46.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "FORBIDDEN"
+
+[node name="Panel2" type="Panel" parent="."]
+visible = false
+offset_left = 182.0
+offset_top = 314.0
+offset_right = 323.0
+offset_bottom = 454.0
+script = SubResource("GDScript_dc35s")
+
+[node name="Label2" type="Label" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -13.0
+offset_right = 46.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "DRAG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="Container" type="MarginContainer" parent="Menu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -0.000946045
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Notebook" type="TextureRect" parent="Menu/Container"]
+custom_minimum_size = Vector2(700, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("13_pxiiu")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="NameTag" type="TextureRect" parent="Menu/Container/Notebook"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 39.0
+offset_top = 13.0
+offset_right = 219.0
+offset_bottom = 146.0
+texture = ExtResource("13_mtbbk")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Cover" type="TextureRect" parent="Menu/Container/Notebook"]
+custom_minimum_size = Vector2(700, 400)
+layout_mode = 2
+offset_left = -447.0
+offset_top = -403.0
+offset_right = 955.0
+offset_bottom = 498.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_q8m5x")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="TabContainer" type="TabContainer" parent="Menu/Container"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+tabs_visible = false
+
+[node name="Tasks" type="MarginContainer" parent="Menu/Container/TabContainer"]
+custom_minimum_size = Vector2(700, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Items" type="MarginContainer" parent="Menu/Container/TabContainer"]
+visible = false
+custom_minimum_size = Vector2(700, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Options" type="MarginContainer" parent="Menu/Container/TabContainer"]
+visible = false
+custom_minimum_size = Vector2(700, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu"]
+libraries = {
+"": SubResource("AnimationLibrary_hj7j5")
+}
+
+[node name="AnimationSequence" type="Node" parent="Menu" node_paths=PackedStringArray("animationPlayer")]
+script = ExtResource("14_mq0xp")
+animationPlayer = NodePath("../AnimationPlayer")
+animation_sequence = Array[String](["slide_up", "notebook_opens", "name_note"])
+delay_between = 0.5

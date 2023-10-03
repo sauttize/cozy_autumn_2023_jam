@@ -1,7 +1,78 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2qkdmgkaff7w"]
+[gd_scene load_steps=22 format=3 uid="uid://d2qkdmgkaff7w"]
 
 [ext_resource type="Script" path="res://scripts/DialogueBox.gd" id="1_vbg70"]
 [ext_resource type="Texture2D" uid="uid://tmk87jt22ron" path="res://icon.png" id="2_g7ymd"]
+[ext_resource type="Script" path="res://resources/DialogueLine.gd" id="2_kopbe"]
+[ext_resource type="Script" path="res://resources/Dialogue.gd" id="3_0528s"]
+[ext_resource type="Script" path="res://resources/Interaction.gd" id="4_m8jlp"]
+[ext_resource type="Texture2D" uid="uid://rxoigew1cai8" path="res://tests/rob/angry.jpg" id="5_3u3eg"]
+[ext_resource type="Texture2D" uid="uid://j1uuo2sst4lr" path="res://tests/rob/neutral.jpg" id="6_nq6dw"]
+[ext_resource type="Texture2D" uid="uid://b0fo4phdsldje" path="res://tests/rob/batman.jpg" id="7_peai7"]
+[ext_resource type="Script" path="res://resources/NPC.gd" id="8_hwf38"]
+
+[sub_resource type="Resource" id="Resource_1vkqd"]
+script = ExtResource("2_kopbe")
+content = "Ello dear"
+emotion = 0
+shake = false
+side_to_side = false
+
+[sub_resource type="Resource" id="Resource_cqsma"]
+script = ExtResource("2_kopbe")
+content = "This is a test for this AWESOME dialogue system (jk it's kinda basic)"
+emotion = 0
+shake = false
+side_to_side = false
+
+[sub_resource type="Resource" id="Resource_2l20c"]
+script = ExtResource("2_kopbe")
+content = "I am Batman, yes"
+emotion = 1
+shake = false
+side_to_side = false
+
+[sub_resource type="Resource" id="Resource_dqw7q"]
+script = ExtResource("3_0528s")
+lines = Array[ExtResource("2_kopbe")]([SubResource("Resource_1vkqd"), SubResource("Resource_cqsma"), SubResource("Resource_2l20c")])
+allow_alt = false
+alt_lines = Array[ExtResource("2_kopbe")]([])
+
+[sub_resource type="Resource" id="Resource_sn2tv"]
+script = ExtResource("2_kopbe")
+content = "This is some alt text just in case"
+emotion = 0
+shake = false
+side_to_side = false
+
+[sub_resource type="Resource" id="Resource_vap8i"]
+script = ExtResource("2_kopbe")
+content = "That's enough, I don't have more lines. I won't loop through my lines tho, go talk to that buddy over there for that..."
+emotion = 2
+shake = false
+side_to_side = false
+
+[sub_resource type="Resource" id="Resource_1016y"]
+script = ExtResource("3_0528s")
+lines = Array[ExtResource("2_kopbe")]([SubResource("Resource_vap8i")])
+allow_alt = false
+alt_lines = Array[ExtResource("2_kopbe")]([SubResource("Resource_sn2tv")])
+
+[sub_resource type="Resource" id="Resource_mgrpp"]
+script = ExtResource("4_m8jlp")
+dialogues = Array[ExtResource("3_0528s")]([SubResource("Resource_dqw7q")])
+in_order = true
+index = 0
+finished = false
+loop = false
+final_dialogue = SubResource("Resource_1016y")
+
+[sub_resource type="Resource" id="Resource_fl6co"]
+script = ExtResource("8_hwf38")
+npc_name = "Robert"
+current_interaction = SubResource("Resource_mgrpp")
+pic_neutral = ExtResource("6_nq6dw")
+pic_angry = ExtResource("5_3u3eg")
+pic_sad = ExtResource("7_peai7")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3514"]
 bg_color = Color(0.109804, 0.109804, 0.109804, 1)
@@ -28,6 +99,7 @@ bg_color = Color(1, 1, 1, 0.623529)
 
 [node name="DialogueBox" type="CanvasLayer"]
 script = ExtResource("1_vbg70")
+npc = SubResource("Resource_fl6co")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

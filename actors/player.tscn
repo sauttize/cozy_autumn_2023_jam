@@ -1,21 +1,184 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyhvg8ycit0tx"]
+[gd_scene load_steps=15 format=3 uid="uid://cyhvg8ycit0tx"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_gbqhj"]
-[ext_resource type="Texture2D" uid="uid://cb4fniyw0ptl" path="res://icon.svg" id="2_a4b0o"]
+[ext_resource type="Texture2D" uid="uid://u8pm1fn48c1" path="res://assets/player/idle_down.png" id="2_hjl8j"]
+[ext_resource type="Texture2D" uid="uid://c5pj6xeq6l1up" path="res://assets/player/walking/down-1.png" id="3_ig60l"]
+[ext_resource type="Texture2D" uid="uid://cj5xyo0h4n4xc" path="res://assets/player/walking/down-2.png" id="4_c3u0c"]
+[ext_resource type="Texture2D" uid="uid://ds146mxkjym7v" path="res://assets/player/walking/up-1.png" id="5_gxq86"]
+[ext_resource type="Texture2D" uid="uid://db63seh6x8i13" path="res://assets/player/walking/up-2.png" id="6_cv3lt"]
+[ext_resource type="Texture2D" uid="uid://bglat2amgxbdl" path="res://assets/player/idle_up.png" id="7_db8u7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdtur"]
-size = Vector2(32, 63)
+size = Vector2(20.5, 19)
+
+[sub_resource type="Animation" id="Animation_0vxb0"]
+resource_name = "walk_down"
+length = 0.40001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_ig60l"), ExtResource("4_c3u0c")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(-0.5, -0.5),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.48)]
+}
+
+[sub_resource type="Animation" id="Animation_m335s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_hjl8j")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_axna8"]
+resource_name = "walk_up"
+length = 0.40001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_gxq86"), ExtResource("6_cv3lt")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(-0.5, -0.5),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.48)]
+}
+
+[sub_resource type="Animation" id="Animation_xxovr"]
+resource_name = "idle_down"
+length = 1.00001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_hjl8j")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.48)]
+}
+
+[sub_resource type="Animation" id="Animation_gx7jr"]
+resource_name = "idle_up"
+length = 1.00001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_db8u7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.48)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fomxl"]
+_data = {
+"RESET": SubResource("Animation_m335s"),
+"idle_down": SubResource("Animation_xxovr"),
+"idle_up": SubResource("Animation_gx7jr"),
+"walk_down": SubResource("Animation_0vxb0"),
+"walk_up": SubResource("Animation_axna8")
+}
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(71, 82)
 script = ExtResource("1_gbqhj")
-speed = 32.0
+speed = 43.0
 acceleration = 20.0
+friction = 10.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.5)
-texture = ExtResource("2_a4b0o")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_hjl8j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(-0.25, 13.5)
 shape = SubResource("RectangleShape2D_gdtur")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fomxl")
+}

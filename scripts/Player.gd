@@ -34,4 +34,11 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity = velocity.move_toward(Vector2(0, input.y) * speed * delta, acceleration)
 	
+	if input.y < 0:
+		$AnimationPlayer.play("walk_up")
+	elif input.y > 0:
+		$AnimationPlayer.play("walk_down")
+	else:
+		$AnimationPlayer.play("idle_down")
+	
 	move_and_slide()
